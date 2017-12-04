@@ -1,0 +1,71 @@
+<md-dialog aria-label="Form">
+<form name='myform'>
+	<md-dialog-content>
+	<md-content layout-padding>
+	<h3>registro {{ingreso.id}}</h3>
+	<div>
+		
+    cliente_str = serializers.ReadOnlyField(
+        source='cliente_fk.apellidos_cliente')  # envia string para listar
+
+    establecimientonegocio_str = serializers.ReadOnlyField(
+        source='establecimientonegocio_fk.establecimientonegocio')  # envia string para listar
+
+    ingreso_id = serializers.ReadOnlyField(
+        source='ingresos_fk.fecha_ingreso')  # envia ID para CRUD
+
+    ingreso_str = serializers.ReadOnlyField(
+        source='ingreso_def.fecha_ingreso')  # envia string para listar
+		<label>Almacen</label>
+		<md-input-container flex>
+		<select ng-model="ingreso.almacen_fk" ng-options="value.id as value.nombre_almacen for value in nombre_almacen_list"><option>--</option>
+		</select>{{ingreso.almacen_fk.id}}
+		</md-input-container>
+
+		<label>Proveedor</label>
+		<md-input-container flex>
+		<select ng-model="ingreso.proveedor_fk" ng-options="value.id as value.razon_social for value in razon_social_list"><option>--</option>
+		</select>{{ingreso.proveedor_fk.id}}
+		</md-input-container>
+		<!--FK MANY TO MANY-->
+		<label>Producto</label>
+		<md-input-container flex multiple>
+		<select ng-model="ingreso.productos_fk" ng-options="value.id as value.nombre_producto for value in nombre_producto_list" multiple id="searchText"><option>--</option>
+		</select>{{ingreso.productos_fk.id}}
+		</md-input-container>
+
+		<div class='container-fluid typeahead-demo' multiple>
+			<input  flex multiple type="text" ng-model="ingreso.productos_fk" uib-typeahead="value.id as value.nombre_producto for value in nombre_producto_list | filter:$viewValue | limitTo:8" style="background-color: white; color:fuchsia" class="form-control"><option>--</option>
+		</select>{{ingreso.productos_fk.id}}
+		</div>
+
+		<md-input-container flex><label>Fecha-Ingreso :</label><input ng-model="ingreso.fecha_ingreso" required>
+		</md-input-container>
+
+		<md-input-container flex><label>Fecha-Vencimiento :</label><input ng-model="ingreso.fecha_vencimiento" required>
+		</md-input-container>
+
+		<md-input-container flex><label>Tipo-Comprobante :</label><input ng-model="ingreso.tipocomprobante" required>
+		</md-input-container>
+
+		<md-input-container flex><label>Precio-Compra :</label><input ng-model="ingreso.precio_compra" required>
+		</md-input-container>
+
+		<md-input-container flex><label>Stock-Inicial :</label><input ng-model="ingreso.stock_inicial" required>
+		</md-input-container>
+
+		<md-input-container flex><label>Stock-Actual :</label><input ng-model="ingreso.stock_actual" required>
+		</md-input-container>
+
+		<md-input-container flex><label>Estado :</label><input ng-model="ingreso.estado" required>
+		</md-input-container>
+	</div>
+	</md-content>
+	</md-dialog-content>
+	<div class="md-actions" layout="row">
+		<span flex></span>
+		<md-button type="reset" ng-click="cancel()">cancelar</md-button>
+		<md-button type="submit"  ng-click="save()" ng-disabled="!myform.$valid">guardar</md-button>
+	</div>
+</form>
+</md-dialog>

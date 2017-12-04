@@ -1,0 +1,53 @@
+<md-dialog aria-label="Form">
+<form name='myform'>
+	<md-dialog-content>
+	<md-content layout-padding>
+	<h3>registro {{venta.id}}</h3>
+	<div>
+		<label>Cliente</label>
+		<md-input-container flex>
+		<select ng-model="venta.cliente_fk" ng-options="value.id as value.apellidos_cliente for value in apellidos_cliente_list"><option>--</option>
+		</select>{{venta.cliente_fk.id}}
+		</md-input-container>
+		<label>EstablecimientoNegocio</label>
+		<md-input-container flex>
+		<select ng-model="venta.establecimientonegocio_fk" ng-options="value.id as value.establecimientonegocio for value in nombre_en_list"><option>--</option>
+		</select>{{venta.establecimientonegocio_fk.id}}
+		</md-input-container>
+		<!--FK MANY TO MANY-->
+		<label>Ingreso</label>
+		<md-input-container flex multiple>
+		<select ng-model="venta.ingresos_fk" ng-options="value.id as value.fecha_ingreso for value in producto_str_list" multiple id="searchText"><option>--</option>
+		</select>{{venta.ingresos_fk.id}}
+		</md-input-container>
+
+		<div class='container-fluid typeahead-demo' multiple>
+			<input  flex multiple type="text" ng-model="venta.ingresos_fk" uib-typeahead="value.id as value.fecha_ingreso for value in producto_str_list | filter:$viewValue | limitTo:8" style="background-color: white; color:fuchsia" class="form-control"><option>--</option>
+		</select>{{venta.ingresos_fk.id}}
+		</div>
+
+		<md-input-container flex><label>Tipo-Venta :</label><input ng-model="almacen.tipo_venta" required>
+		</md-input-container>
+
+		<md-input-container flex><label>Fecha-Venta :</label><input ng-model="almacen.fecha_venta" required></md-input-container>
+
+		<md-input-container flex><label>Tipo-Comprobante :</label><input ng-model="almacen.tipocomprobante" required>
+		</md-input-container>
+
+		<md-input-container flex><label>Cantidad :</label><input ng-model="almacen.cantidad" required>
+		</md-input-container>
+
+		<md-input-container flex><label>Precio-Venta :</label><input ng-model="almacen.precio_venta" required></md-input-container>
+
+		<md-input-container flex><label>Estado :</label><input ng-model="almacen.estado" required>
+		</md-input-container>
+	</div>
+	</md-content>
+	</md-dialog-content>
+	<div class="md-actions" layout="row">
+		<span flex></span>
+		<md-button type="reset" ng-click="cancel()">cancelar</md-button>
+		<md-button type="submit"  ng-click="save()" ng-disabled="!myform.$valid">guardar</md-button>
+	</div>
+</form>
+</md-dialog>

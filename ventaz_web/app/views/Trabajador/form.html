@@ -1,0 +1,59 @@
+<md-dialog aria-label="Form">
+<form name='myform'>
+	<md-dialog-content>
+	<md-content layout-padding>
+	<h3>registro {{trabajador.id}}</h3>
+	<div>
+				<!--FK MANY TO MANY-->
+		<label>EstablecimientoNegocio</label>
+		<md-input-container flex multiple>
+		<select ng-model="trabajador.establecimientonegocios_fk" ng-options="value.id as value.nombre_en for value in nombre_en_list" multiple id="searchText"><option>--</option>
+		</select>{{trabajador.establecimientonegocios_fk.id}}
+		</md-input-container>
+
+		<div class='container-fluid typeahead-demo' multiple>
+			<input  flex multiple type="text" ng-model="trabajador.establecimientonegocios_fk" uib-typeahead="value.id as value.nombre_en for value in nombre_en_list | filter:$viewValue | limitTo:8" style="background-color: white; color:fuchsia" class="form-control"><option>--</option>
+		</select>{{trabajador.establecimientonegocios_fk.id}}
+		</div>
+				<!--FK MANY TO MANY-->
+		<label>Almacen</label>
+		<md-input-container flex multiple>
+		<select ng-model="trabajador.almacens_fk" ng-options="value.id as value.nombre_almacen for value in nombre_almacen_list" multiple id="searchText"><option>--</option>
+		</select>{{trabajador.almacens_fk.id}}
+		</md-input-container>
+
+		<div class='container-fluid typeahead-demo' multiple>
+			<input  flex multiple type="text" ng-model="trabajador.almacens_fk" uib-typeahead="value.id as value.nombre_almacen for value in nombre_almacen_list | filter:$viewValue | limitTo:8" style="background-color: white; color:fuchsia" class="form-control"><option>--</option>
+		</select>{{trabajador.almacens_fk.id}}
+		</div>
+
+
+		<md-input-container flex><label>Apellidos :</label><input ng-model="trabajador.apellidos_trabajador" required>
+		</md-input-container>
+
+		<md-input-container flex><label>Nombre :</label><input ng-model="trabajador.nombre_trabajador" required>
+		</md-input-container>
+
+		<md-input-container flex><label>Direccion :</label><input ng-model="trabajador.direccion_trabajador" required></md-input-container>
+
+		<md-input-container flex><label>Telefono :</label><input ng-model="trabajador.telefono_trabajador" required>
+		</md-input-container>
+
+		<md-input-container flex><label>Num-Doc :</label><input ng-model="trabajador.numdoc_trabajador" required>
+		</md-input-container>
+
+		<md-input-container flex><label>e-mail :</label><input ng-model="trabajador.email_trabajador" required>
+		</md-input-container>
+
+		<md-input-container flex><label>Genero :</label><input ng-model="trabajador.genero_trabajador" required>
+		</md-input-container>
+	</div>
+	</md-content>
+	</md-dialog-content>
+	<div class="md-actions" layout="row">
+		<span flex></span>
+		<md-button type="reset" ng-click="cancel()">cancelar</md-button>
+		<md-button type="submit"  ng-click="save()" ng-disabled="!myform.$valid">guardar</md-button>
+	</div>
+</form>
+</md-dialog>

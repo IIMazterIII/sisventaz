@@ -1,0 +1,38 @@
+﻿header{
+    background:#4099FF;
+    color:#ffffff;
+}
+
+.main{
+    background:#c0deed;
+}
+
+.color1{
+    background:#1dcaff;
+}
+
+aside{
+    background:#8A2BE2;
+    color:#ffffff;
+}
+
+footer{
+    background:#9370DB;
+    color:#ffffff;
+}
+
+body{
+    padding-top:80px;
+}
+
+h2{
+    border: 2px solid black;
+    width: 50%;
+    position: relative;
+    margin-left: 25%;
+}
+
+h2:hover{
+    background: #4099FF;
+}
+

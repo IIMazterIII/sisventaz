@@ -1,0 +1,32 @@
+<md-dialog aria-label="Form">
+<form name='myform'>
+	<md-dialog-content>
+	<md-content layout-padding>
+	<h3>registro {{proveedor.id}}</h3>
+	<div>
+		<md-input-container flex><label>Razon Social :</label><input ng-model="proveedor.razon_social" required>
+		</md-input-container>
+
+		<md-input-container flex><label>Direccion :</label><input ng-model="proveedor.direccion_proveedor" required></md-input-container>
+
+		<md-input-container flex><label>Telefono :</label><input ng-model="proveedor.telefono_proveedor" required>
+		</md-input-container>
+
+		<md-input-container flex><label>Tipo-DOC :</label><input ng-model="proveedor.tipodoc_proveedor" required>
+		</md-input-container>
+
+		<md-input-container flex><label>Num-DOC :</label><input ng-model="proveedor.numdoc_proveedor" required>
+		</md-input-container>
+
+		<md-input-container flex><label>e-mail :</label><input ng-model="proveedor.email_proveedor" required>
+		</md-input-container>
+	</div>
+	</md-content>
+	</md-dialog-content>
+	<div class="md-actions" layout="row">
+		<span flex></span>
+		<md-button type="reset" ng-click="cancel()">cancelar</md-button>
+		<md-button type="submit"  ng-click="save()" ng-disabled="!myform.$valid">guardar</md-button>
+	</div>
+</form>
+</md-dialog>

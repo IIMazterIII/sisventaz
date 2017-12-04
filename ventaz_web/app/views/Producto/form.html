@@ -1,0 +1,29 @@
+<md-dialog aria-label="Form">
+<form name='myform'>
+	<md-dialog-content>
+	<md-content layout-padding>
+	<h3>registro {{producto.id}}</h3>
+	<div>
+		<label>Categoria</label>
+		<md-input-container flex>
+		<select ng-model="producto.categoria_fk" ng-options="value.id as value.nombre_categoria for value in nombre_categoria_list"><option>--</option>
+		</select>{{producto.categoria_fk.id}}
+		</md-input-container>
+		
+		<md-input-container flex><label>Nombre :</label><input ng-model="producto.nombre_producto" required>
+		</md-input-container>
+
+		<md-input-container flex><label>Unidad Medida :</label><input ng-model="producto.unidad_medida" required></md-input-container>
+
+		<md-input-container flex><label>Descripcion :</label><input ng-model="producto.descripcion_producto" required>
+		</md-input-container>
+	</div>
+	</md-content>
+	</md-dialog-content>
+	<div class="md-actions" layout="row">
+		<span flex></span>
+		<md-button type="reset" ng-click="cancel()">cancelar</md-button>
+		<md-button type="submit"  ng-click="save()" ng-disabled="!myform.$valid">guardar</md-button>
+	</div>
+</form>
+</md-dialog>
